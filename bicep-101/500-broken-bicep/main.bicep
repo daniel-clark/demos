@@ -39,3 +39,20 @@ resource sqlDb 'Microsoft.Sql/servers/databases@2023-08-01-preview' = {
     sampleName: 'WideWorldImportersFull'
   }
 }
+
+resource thing 'Microsoft.Sql/servers/vulnerabilityAssessments@2023-08-01-preview' = {
+  name: 'default'
+  parent: sqlServer
+
+  properties: {
+    storageContainerPath: 'sqlvulnerabilityassessments'
+    storageAccountAccessKey: 'todo'
+    recurringScans: {
+      
+      isEnabled: true
+      emails: [
+        'example@example.com'
+      ]
+    }
+  }
+}
